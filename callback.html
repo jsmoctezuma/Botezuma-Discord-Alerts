@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>TikTok Callback - Botezuma</title>
+  <link rel="stylesheet" href="./styles.css" />
+</head>
+<body>
+  <main class="app-shell">
+    <section class="card">
+      <div class="badge">TikTok callback</div>
+      <h1>Authorization response received</h1>
+      <p>
+        This page receives the TikTok authorization response for the demo.
+        For security, GitHub Pages cannot exchange the authorization code for tokens because that
+        requires a private server and a Client Secret.
+      </p>
+
+      <div id="status" class="status-box"></div>
+
+      <h2>Next production step</h2>
+      <p>
+        In production, Botezuma will use a secure backend to exchange this code for an access token,
+        call TikTok Display API, read recent videos, and post Discord alerts.
+      </p>
+
+      <a class="secondary inline" href="./index.html">Back to miniapp</a>
+    </section>
+  </main>
+
+  <script>
+    const params = new URLSearchParams(window.location.search);
+    const code = params.get("code");
+    const state = params.get("state");
+    const error = params.get("error");
+    const status = document.getElementById("status");
+
+    if (error) {
+      status.innerHTML = `<strong>Authorization error:</strong><br><code>${error}</code>`;
+      status.className = "status-box error";
+    } else if (code) {
+      status.innerHTML = `
+        <strong>Authorization code received.</strong><br>
+        <span>This confirms TikTok Login Kit redirected back to this app.</span><br><br>
+        <strong>Code preview:</strong><br>
+        <code>${code.slice(0, 12)}...</code><br><br>
+        <strong>State:</strong><br>
+        <code>${state || "No state returned"}</code>
+      `;
+      status.className = "status-box success";
+    } else {
+      status.innerHTML = "No authorization code was found in the URL.";
+      status.className = "status-box";
+    }
+  </script>
+</body>
+</html>

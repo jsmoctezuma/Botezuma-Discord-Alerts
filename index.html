@@ -1,0 +1,78 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Botezuma TikTok Miniapp</title>
+  <link rel="stylesheet" href="./styles.css" />
+</head>
+<body>
+  <main class="app-shell">
+    <section class="hero card">
+      <div class="badge">Botezuma Discord Alerts</div>
+      <h1>TikTok alerts for Discord</h1>
+      <p>
+        Connect TikTok to demonstrate how Botezuma will read recent public videos from
+        an authorized TikTok account and announce them inside a Discord server.
+      </p>
+
+      <div class="actions">
+        <button id="connectBtn" class="primary">Connect TikTok</button>
+        <a class="secondary" href="./privacy.html">Privacy Policy</a>
+        <a class="secondary" href="./terms.html">Terms</a>
+      </div>
+
+      <p class="small">
+        This page is a minimal review/demo page for TikTok Developer. It does not store tokens
+        in the browser. The production Discord bot will use private server environment variables.
+      </p>
+    </section>
+
+    <section class="card">
+      <h2>Integration flow</h2>
+      <ol class="steps">
+        <li>Owner clicks <strong>Connect TikTok</strong>.</li>
+        <li>TikTok Login Kit asks for permission.</li>
+        <li>The app requests <code>user.info.basic</code> and <code>video.list</code>.</li>
+        <li>Botezuma reads recent public TikTok videos from the authorized account.</li>
+        <li>When a new video is detected, Botezuma posts a Discord alert.</li>
+      </ol>
+    </section>
+
+    <section class="card">
+      <h2>Discord alert preview</h2>
+      <div class="discord-preview">
+        <div class="discord-message">
+          <strong>@everyone jsmoctezuma acaba de subir un TikTok</strong>
+          <br /><br />
+          Visítalo: <span class="link">https://www.tiktok.com/@jsmoctezuma</span><br />
+          Video: 🔥 Nuevo TikTok de la Manco Squad<br />
+          No olvides dejar tu like!
+        </div>
+        <div class="embed">
+          <div class="embed-title">🔥 Nuevo TikTok de jsmoctezuma</div>
+          <div class="embed-text">
+            Botezuma detectará videos públicos recientes y enviará un aviso al servidor de Discord.
+          </div>
+          <div class="embed-image">TikTok video cover preview</div>
+          <div class="embed-footer">TikTok • Botezuma Discord Alerts</div>
+        </div>
+      </div>
+    </section>
+
+    <section class="card muted-card">
+      <h2>Configuration</h2>
+      <p>
+        Before recording the TikTok review video, edit <code>app.js</code> and replace:
+      </p>
+      <pre><code>CLIENT_KEY
+REDIRECT_URI</code></pre>
+      <p>
+        Use your TikTok Developer Client Key and the exact Redirect URI configured in the TikTok Developer Portal.
+      </p>
+    </section>
+  </main>
+
+  <script src="./app.js"></script>
+</body>
+</html>
