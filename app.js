@@ -5,7 +5,7 @@
 // Replace these values after your GitHub Pages URL is ready.
 
 const TIKTOK_CONFIG = {
-  CLIENT_KEY: "awkkejaktbhmwfxy",
+  CLIENT_KEY: "key",
   REDIRECT_URI: "https://jsmoctezuma.github.io/Botezuma-Discord-Alerts/callback.html",
   SCOPES: ["user.info.basic", "video.list"],
 };
